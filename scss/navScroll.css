@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.section {
+  height: 500px;
+  line-height: 500px;
+  background: #123;
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #fff; }
+
+.nav {
+  position: fixed;
+  top: 20%;
+  right: 0; }
+  .nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 10px; }
+  .nav .current {
+    color: #209856; }
+
+.head {
+  width: 100%;
+  height: 80px;
+  background: #079052; }
+
+.footer {
+  height: 100px;
+  background: #085331; }
+
+/*# sourceMappingURL=navScroll.css.map */
