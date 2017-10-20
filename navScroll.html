@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+.section{height: 500px;background: pink;}
+.nav{position: fixed;top:20%;right:0;}
+.nav a{display: block;}
+.current{color: green}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<a href="#section1">导航1</a>
+		<a href="#section2">导航2</a>
+		<a href="#section3">导航3</a>
+		<a href="#section4">导航4</a>
+		<a href="#section5">导航5</a>
+		<a href="#section6">导航6</a>
+	</div>
+	<div class="section" id="section1">1</div>
+	<div class="section" id="section2">2</div>
+	<div class="section" id="section3">3</div>
+	<div class="section" id="section4">4</div>
+	<div class="section" id="section5">5</div>
+<div class="section" id="section6">6</div>
+<script language="javascript" src="http://www.51cto.com/js/jquery/jquery-1.9.0.min.js"></script>
+<script type="text/javascript">
+var $navs = $('.nav a'),          // 导航
+  $sections = $('.section'),       // 模块
+  $window = $(window),
+  navLength = $navs.length - 1;   //5
+$window.on('scroll', function() {
+  var scrollTop = $window.scrollTop(),
+    len = navLength;
+  for (; len > -1; len--) {
+    var that = $sections.eq(len);
+    if (scrollTop >= that.offset().top) {
+       $navs.removeClass('current').eq(len).addClass('current');
+       break;
+    }
+  }
+});
+$navs.on('click', function(e) {
+  e.preventDefault();
+  $('html, body').animate({
+    'scrollTop': $($(this).attr('href')).offset().top
+  }, 400);
+});
+</script>
+
+
+
+</body>
+</html>
