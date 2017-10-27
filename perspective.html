@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            -moz-user-focus: none;
+            transition: all 1s;
+            box-sizing: border-box;
+        }
+        *:focus{
+            border:none;
+            outline: none;
+        }
+        /*禁止用户选中文本*/
+        body{
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }        
+        /*鼠标选中文本颜色*/
+        ::-moz-selection{
+            background:#933;
+            color: #FFF
+        }
+        ::selection{
+            background:#933/*#16364b*/;
+            color: #FFF
+        }
+        ::-webkit-selection{
+            background:#933; 
+            color: #FFF
+        }
+        .favicon{
+            position: absolute;
+            bottom:10%;
+            left:50%;
+            margin-left:-20px;
+            width:40px;
+            height:40px;
+            z-index: 3;
+            background: url(img/favicon.png) no-repeat center top;
+            opacity: 0.5;
+        }  
+        button{
+            position: absolute;
+            bottom:20%;
+            left:50%;
+            margin-left:-80px;
+            -webkit-appearance: none;
+            border:0;
+            width: 160px;
+            height:40px;
+            text-align: center;
+            font-size: 16px;
+            background: none;
+            color: #cae8ec;
+            cursor: pointer;
+            z-index: 2;
+        }
+        button::before{
+            content: '^';
+            position: absolute;
+            top:12px;
+            left:0;
+        }
+        button::after{
+            content: '^';
+            position: absolute;
+            top:12px;
+            right:0;        
+        }        
+        button:hover{color: #4e9da6;text-shadow: 5px 5px 5px rgb(0, 31, 41);
+            transform: scale(1.2);
+            -webkit-transform: scale(1.2);
+        }
+        button:hover::before{
+            transform: rotateX(-45deg);          
+        }
+        button:hover:after{
+            transform: rotateX(-45deg);           
+        }        
+        section{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height:100%;
+            background:rgb(5, 17, 37) url(img/bg1.jpg) no-repeat center center;
+            background-size: cover;
+            overflow: hidden;  
+            animation: move 1s;
+        }  
+        .move{animation: move 1s;}
+        .text{position:absolute;width:100%;height:100%;color: #fff;font-size: 30px;line-height: 2;background-color: rgba(0,0,0,.3); 
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform: perspective(0) rotateY(90deg) rotateX(90deg);
+            transform: perspective(0) rotateY(90deg) rotateX(90deg);  
+        }
+        .text span{
+            width:100%;position: absolute;left:0;top:50%;height:160px;margin-top:-90px;text-align: center;
+        }
+        .text_hover{
+            -webkit-transform: perspective(0) rotateY(0) rotateX(0);
+            transform: perspective(0) rotateY(0) rotateX(0); 
+        }
+        .bye{font-size: 40px;}
+        @keyframes move{
+            from{
+                background-position:-10% -10%;
+            }to{
+                background-position:center center;
+            }
+        }
+        @-webkit-keyframes move{
+            from{
+                background-position:-10% -10%;
+            }to{
+                background-position:center center;
+            }
+        }        
+    </style>
+</head>
+<body>
+    <section id="page">
+        <span class="favicon"></span>
+        <button id="btn">change surface</change></button>
+        <p class="text"><span>Fog fuzzy up road,<br>Fog make people missing in wood,Fog is secret.</span></p>
+        <p class="text"><span>When i was born,<br>I see my back with light,it's a joke.</span></p>
+        <p class="text"><span>As a girl,<br>I always dream the world will be pink.</span></p>
+        <p class="text"><span>Water is so soft<br>that I can't catch it and I afraid her.</span></p>
+        <p class="text"><span><b class="bye">Bye-Bye</b><em style="display:block;font-size:20px;">effect <sup style="font-size:10px;">by zxf</sup></span></em><button id="back">back</back></button></p>
+    </section>
+    <script>
+        var page = document.getElementById('page');
+        var p = document.getElementsByClassName('text');
+        var btn = document.getElementById('btn');
+        var back = document.getElementById('back');
+        var num = -1;
+        var arr_img = ['img/bg1.jpg','img/bg2.jpg','img/bg3.jpg','img/bg4.jpg','img/bg5.jpg'];
+        var arr_src = '';   
+        window.onload = function(){
+            p[0].setAttribute('class','text text_hover');
+        }
+        btn.onclick = function(event){
+            event.stopPropagation();
+            num++;
+            arr_src = arr_img[num+1];
+            page.style.backgroundImage="url("+arr_src+")";
+            console.log(arr_src);            
+            switch(num){
+                case 0:
+                p[0].setAttribute('class','text');
+                p[1].setAttribute('class','text text_hover') 
+                break;
+                case 1:
+                p[1].setAttribute('class','text');
+                p[2].setAttribute('class','text text_hover')
+                break;
+                case 2:
+                p[2].setAttribute('class','text');
+                p[3].setAttribute('class','text text_hover')                
+                break;
+                case 3:
+                p[3].setAttribute('class','text');
+                p[4].setAttribute('class','text text_hover');              
+                btn.style.display = 'none'
+                break;                                                
+            }
+        }
+        back.onclick = function(){
+            p[0].setAttribute('class','text text_hover');
+            p[4].setAttribute('class','text');
+            btn.style.display = 'block';
+            arr_src = arr_img[0];            
+            page.style.backgroundImage="url("+arr_src+")";            
+            num = -1;        
+        }
+    </script>
+</body>
+</html>
