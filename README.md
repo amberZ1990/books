@@ -1,4 +1,9 @@
 # demos
-> demos_定位导航demo
 
->> 效果查看地址 https://amberz1990.github.io/demos/navScroll.html
+> auto nav
+
+[https://amberz1990.github.io/demos/navScroll.html](https://amberz1990.github.io/demos/navScroll.html)
+
+> perspective effect
+
+[https://amberz1990.github.io/demos/perspective.html](https://amberz1990.github.io/demos/perspective.html)
