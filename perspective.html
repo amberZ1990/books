@@ -141,49 +141,49 @@
         <p class="text"><span><b class="bye">Bye-Bye</b><em style="display:block;font-size:20px;">effect <sup style="font-size:10px;">by zxf</sup></span></em><button id="back">back</back></button></p>
     </section>
     <script>
-        var page = document.getElementById('page');
-        var p = document.getElementsByClassName('text');
-        var btn = document.getElementById('btn');
-        var back = document.getElementById('back');
-        var num = -1;
-        var arr_img = ['img/bg1.jpg','img/bg2.jpg','img/bg3.jpg','img/bg4.jpg','img/bg5.jpg'];
-        var arr_src = '';   
         window.onload = function(){
+            var page = document.getElementById('page');
+            var p = document.getElementsByClassName('text');
+            var btn = document.getElementById('btn');
+            var back = document.getElementById('back');
+            var num = -1;
+            var arr_img = ['img/bg1.jpg','img/bg2.jpg','img/bg3.jpg','img/bg4.jpg','img/bg5.jpg'];
+            var arr_src = '';   
             p[0].setAttribute('class','text text_hover');
-        }
-        btn.onclick = function(event){
-            event.stopPropagation();
-            num++;
-            arr_src = arr_img[num+1];
-            page.style.backgroundImage="url("+arr_src+")";
-            console.log(arr_src);            
-            switch(num){
-                case 0:
-                p[0].setAttribute('class','text');
-                p[1].setAttribute('class','text text_hover') 
-                break;
-                case 1:
-                p[1].setAttribute('class','text');
-                p[2].setAttribute('class','text text_hover')
-                break;
-                case 2:
-                p[2].setAttribute('class','text');
-                p[3].setAttribute('class','text text_hover')                
-                break;
-                case 3:
-                p[3].setAttribute('class','text');
-                p[4].setAttribute('class','text text_hover');              
-                btn.style.display = 'none'
-                break;                                                
+            btn.onclick = function(event){
+                event.stopPropagation();
+                num++;
+                arr_src = arr_img[num+1];
+                page.style.backgroundImage="url("+arr_src+")";
+                console.log(arr_src);            
+                switch(num){
+                    case 0:
+                    p[0].setAttribute('class','text');
+                    p[1].setAttribute('class','text text_hover') 
+                    break;
+                    case 1:
+                    p[1].setAttribute('class','text');
+                    p[2].setAttribute('class','text text_hover')
+                    break;
+                    case 2:
+                    p[2].setAttribute('class','text');
+                    p[3].setAttribute('class','text text_hover')                
+                    break;
+                    case 3:
+                    p[3].setAttribute('class','text');
+                    p[4].setAttribute('class','text text_hover');              
+                    btn.style.display = 'none'
+                    break;                                                
+                }
             }
-        }
-        back.onclick = function(){
-            p[0].setAttribute('class','text text_hover');
-            p[4].setAttribute('class','text');
-            btn.style.display = 'block';
-            arr_src = arr_img[0];            
-            page.style.backgroundImage="url("+arr_src+")";            
-            num = -1;        
+            back.onclick = function(){
+                p[0].setAttribute('class','text text_hover');
+                p[4].setAttribute('class','text');
+                btn.style.display = 'block';
+                arr_src = arr_img[0];            
+                page.style.backgroundImage="url("+arr_src+")";            
+                num = -1;        
+            }
         }
     </script>
 </body>
