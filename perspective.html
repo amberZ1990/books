@@ -130,7 +130,7 @@
         }        
     </style>
 </head>
-<body>
+<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
     <section id="page">
         <span class="favicon"></span>
         <button id="btn">change surface</change></button>
@@ -183,6 +183,14 @@
                 arr_src = arr_img[0];            
                 page.style.backgroundImage="url("+arr_src+")";            
                 num = -1;        
+            }
+        }
+        document.onkeydown=function (e){
+            var currKey=0,evt=e||window.event;
+            currKey=evt.keyCode||evt.which||evt.charCode;
+            if (currKey == 123) {
+                window.event.cancelBubble = true;
+                window.event.returnValue = false;
             }
         }
     </script>
